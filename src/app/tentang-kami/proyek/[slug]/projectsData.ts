@@ -1,0 +1,112 @@
+export const projectsData = {
+  "indocement-switchgear-retrofit": {
+    title: "Indocement Switchgear Retrofit",
+    industry: "Semen",
+    industryEn: "Cement",
+    location: "Citeureup, Bogor",
+    year: "2023",
+    voltage: "6.3kV",
+    scope: "Retrofit & Modernization",
+    descId: "Retrofit menyeluruh panel switchgear tegangan menengah di pabrik PT Indocement, menggantikan unit lama yang sudah berumur puluhan tahun tanpa mengganggu jadwal produksi semen.",
+    descEn: "Full retrofit of medium voltage switchgear panels at PT Indocement's plant, replacing decades-old units without disrupting the cement production schedule.",
+    challengesId: [
+      "Panel eksisting berusia lebih dari 25 tahun dengan risiko kegagalan yang terus meningkat.",
+      "Area kerja berada di tengah lini produksi aktif dengan ruang gerak sangat terbatas.",
+      "Jadwal shutdown pabrik yang ketat untuk meminimalkan kehilangan produksi semen.",
+    ],
+    challengesEn: [
+      "Existing panels over 25 years old with an increasing risk of failure.",
+      "Work area located within an active production line with very limited clearance.",
+      "Tight plant shutdown schedule to minimize cement production loss.",
+    ],
+    solutionsId: [
+      "Penggantian panel dilakukan bertahap per section untuk menjaga kontinuitas suplai.",
+      "Perencanaan sequence kerja terperinci bersama tim K3 dan operasional pabrik.",
+      "Pengujian fungsi dan proteksi menyeluruh sebelum energizing setiap panel baru.",
+    ],
+    solutionsEn: [
+      "Panel replacement carried out in stages per section to maintain supply continuity.",
+      "Detailed work sequence planning coordinated with plant safety and operations teams.",
+      "Full functional and protection testing before energizing each new panel.",
+    ],
+    image: "/projects/project-indocement-after-1.jpeg",
+    gallery: [
+      { src: "/projects/project-indocement-before-1.jpeg", label: "Before" },
+      { src: "/projects/project-indocement-before-2.jpeg", label: "Before" },
+      { src: "/projects/project-indocement-after-1.jpeg", label: "After" },
+      { src: "/projects/project-indocement-after-2.jpeg", label: "After" },
+      { src: "/projects/project-indocement-after-3.jpeg", label: "After" },
+      { src: "/projects/project-indocement-after-4.jpeg", label: "After" },
+    ],
+  },
+  "pertamina-cepu-switchgear-commissioning": {
+    title: "Pertamina Cepu Switchgear Testing & Commissioning",
+    industry: "Migas",
+    industryEn: "Oil & Gas",
+    location: "Cepu, Bojonegoro",
+    year: "2024",
+    voltage: "24kV",
+    scope: "Testing & Commissioning",
+    descId: "Pengujian dan commissioning panel switchgear 24kV, 630A, 16kA untuk fasilitas produksi migas Pertamina di Blok Cepu, mencakup pengujian proteksi dan partial discharge.",
+    descEn: "Testing and commissioning of a 24kV, 630A, 16kA switchgear panel for Pertamina's oil & gas production facility in Blok Cepu, including protection and partial discharge testing.",
+    challengesId: [
+      "Fasilitas beroperasi di area terpencil dengan akses logistik yang terbatas.",
+      "Standar keselamatan migas yang ketat untuk setiap pekerjaan bertegangan.",
+      "Diperlukan hasil pengujian yang presisi untuk sertifikasi laik operasi.",
+    ],
+    challengesEn: [
+      "Facility operates in a remote area with limited logistics access.",
+      "Strict oil & gas safety standards for all live-voltage work.",
+      "Precise test results required for operational readiness certification.",
+    ],
+    solutionsId: [
+      "Mobilisasi unit pengujian portable termasuk partial discharge test set.",
+      "Koordinasi ketat dengan tim HSE lapangan mengikuti prosedur permit to work.",
+      "Dokumentasi hasil pengujian lengkap sebagai dasar sertifikasi commissioning.",
+    ],
+    solutionsEn: [
+      "Mobilization of portable test equipment, including a partial discharge test set.",
+      "Close coordination with the on-site HSE team following permit-to-work procedures.",
+      "Complete test result documentation as the basis for commissioning certification.",
+    ],
+    image: "/projects/project-pertamina-cepu-1.jpeg",
+    gallery: [
+      { src: "/projects/project-pertamina-cepu-1.jpeg", label: "Testing" },
+      { src: "/projects/project-pertamina-cepu-2.jpeg", label: "Testing" },
+    ],
+  },
+  "pusri-sg41-unigear-panel": {
+    title: "Pusri SG41 Unigear Panel Installation",
+    industry: "Pupuk & Petrokimia",
+    industryEn: "Fertilizer & Petrochemical",
+    location: "Palembang",
+    year: "2024",
+    voltage: "13.8kV",
+    scope: "Supply & Installation",
+    descId: "Pengadaan dan instalasi 7 panel switchgear ABB Unigear 13.8kV, 40kA, 2000A untuk pabrik SG41 milik PT Pupuk Sriwidjaja (Pusri) Palembang.",
+    descEn: "Supply and installation of 7 ABB Unigear switchgear panels rated 13.8kV, 40kA, 2000A for the SG41 plant of PT Pupuk Sriwidjaja (Pusri) in Palembang.",
+    challengesId: [
+      "Kapasitas hubung singkat 40kA menuntut spesifikasi panel dan instalasi kelas tinggi.",
+      "Koordinasi pengiriman 7 unit panel besar ke lokasi pabrik pupuk yang padat aktivitas.",
+      "Interkoneksi dengan sistem kelistrikan eksisting pabrik SG41 tanpa gangguan produksi.",
+    ],
+    challengesEn: [
+      "A 40kA short-circuit rating demanded high-grade panel specification and installation.",
+      "Coordinating delivery of 7 large panel units to a busy fertilizer plant site.",
+      "Interconnection with SG41's existing electrical system without disrupting production.",
+    ],
+    solutionsId: [
+      "Kolaborasi dengan ABB untuk memastikan kesesuaian spesifikasi Unigear 13.8kV, 40kA, 2000A.",
+      "Perencanaan logistik dan sequence instalasi panel per unit secara rinci.",
+      "Pengujian commissioning menyeluruh sebelum panel dinyatakan siap operasi.",
+    ],
+    solutionsEn: [
+      "Collaboration with ABB to ensure Unigear 13.8kV, 40kA, 2000A specification compliance.",
+      "Detailed logistics and per-unit panel installation sequence planning.",
+      "Comprehensive commissioning tests before the panels were declared ready for operation.",
+    ],
+    image: "/projects/project-pusri-SG41.jpeg",
+  },
+};
+
+export type ProjectSlug = keyof typeof projectsData;
