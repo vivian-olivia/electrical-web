@@ -29,7 +29,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 pt-[env(safe-area-inset-top)]",
         solidBg
           ? "bg-[#070D1A]/95 backdrop-blur-md shadow-lg"
           : isScrolled
@@ -37,7 +37,7 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 h-[70px] flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 h-[70px] flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
@@ -68,14 +68,14 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setLanguage(language === "id" ? "en" : "id")}
-            className="flex items-center gap-1.5 text-sm font-medium text-white/60 hover:text-white transition-colors px-2.5 py-1.5 rounded border border-white/15 hover:border-white/30"
+            className="h-9 flex items-center gap-1.5 text-sm font-medium text-white/60 hover:text-white transition-colors px-2.5 rounded border border-white/15 hover:border-white/30"
           >
             <Globe className="h-3.5 w-3.5" />
             <span>{language.toUpperCase()}</span>
           </button>
           <Button
             asChild
-            className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-5 py-2 rounded shadow-md"
+            className="h-9 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-5 rounded shadow-md"
           >
             <Link href="/hubungi-kami">
               {language === "id" ? "Hubungi Kami" : "Contact Us"}
@@ -85,8 +85,11 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden text-white p-2.5 -mr-2.5 flex items-center justify-center"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? (language === "id" ? "Tutup menu" : "Close menu") : (language === "id" ? "Buka menu" : "Open menu")}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav-menu"
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -94,12 +97,13 @@ export function Navbar() {
 
       {/* Mobile menu */}
       <div
+        id="mobile-nav-menu"
         className={cn(
           "md:hidden bg-[#070D1A]/95 backdrop-blur-md transition-all duration-300 overflow-hidden",
           mobileOpen ? "max-h-96 border-t border-white/10" : "max-h-0"
         )}
       >
-        <nav className="flex flex-col px-6 py-4 gap-1">
+        <nav className="flex flex-col px-6 md:px-12 py-4 gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -116,12 +120,12 @@ export function Navbar() {
           <div className="flex items-center justify-between pt-3">
             <button
               onClick={() => setLanguage(language === "id" ? "en" : "id")}
-              className="flex items-center gap-1.5 text-sm text-white/60 hover:text-white"
+              className="flex items-center gap-1.5 text-sm text-white/60 hover:text-white -ml-2 px-2 py-3"
             >
               <Globe className="h-4 w-4" />
               {language === "id" ? "English" : "Bahasa ID"}
             </button>
-            <Button asChild size="sm" className="bg-blue-600 text-white">
+            <Button asChild size="sm" className="h-11 bg-blue-600 text-white">
               <Link href="/hubungi-kami" onClick={() => setMobileOpen(false)}>
                 {language === "id" ? "Hubungi Kami" : "Contact Us"}
               </Link>

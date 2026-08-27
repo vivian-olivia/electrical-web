@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -42,6 +42,7 @@
 
   --font-sans: var(--app-font-sans);
   --font-display: var(--app-font-display);
+  --font-mono: var(--app-font-mono);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -82,7 +83,8 @@
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-display: 'Plus Jakarta Sans', sans-serif;
-  
+  --app-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
   --radius: 0.25rem;
 }
 
@@ -130,73 +132,36 @@
   }
 }
 
-/* ─── Electric lightning animation ─── */
-@keyframes bolt-flicker-1 {
-  0%, 100% { opacity: 0; }
-  3%        { opacity: 1; }
-  6%        { opacity: 0.15; }
-  8%        { opacity: 1; }
-  11%       { opacity: 0; }
-  55%       { opacity: 0; }
-  57%       { opacity: 0.9; }
-  59%       { opacity: 0.1; }
-  61%       { opacity: 0.8; }
-  63%       { opacity: 0; }
+/* ─── Industrial blueprint grid (static hero texture) ─── */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(120, 170, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 255, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 75%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 75%, transparent);
 }
 
-@keyframes bolt-flicker-2 {
-  0%, 100%  { opacity: 0; }
-  15%       { opacity: 0; }
-  17%       { opacity: 1; }
-  20%       { opacity: 0.2; }
-  22%       { opacity: 1; }
-  25%       { opacity: 0; }
-  70%       { opacity: 0; }
-  72%       { opacity: 0.85; }
-  74%       { opacity: 0; }
+/* ─── Glassmorphism panels ─── */
+.glass-panel {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 8px 30px rgba(3, 8, 16, 0.35);
 }
 
-@keyframes bolt-flicker-3 {
-  0%, 100%  { opacity: 0; }
-  35%       { opacity: 0; }
-  37%       { opacity: 0.7; }
-  39%       { opacity: 0.1; }
-  41%       { opacity: 0.7; }
-  43%       { opacity: 0; }
-  80%       { opacity: 0; }
-  82%       { opacity: 0.6; }
-  84%       { opacity: 0; }
+.glass-panel-light {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.4));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 8px 30px rgba(15, 23, 42, 0.08);
 }
-
-@keyframes origin-pulse {
-  0%, 100% { opacity: 0.9; transform: scale(1); }
-  50%      { opacity: 0.4; transform: scale(0.7); }
-}
-
-@keyframes origin-pulse-outer {
-  0%, 100% { opacity: 0.15; transform: scale(1); }
-  50%      { opacity: 0.05; transform: scale(1.3); }
-}
-
-@keyframes spark-pulse {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  10%      { opacity: 1; transform: scale(1); }
-  40%      { opacity: 0.6; transform: scale(0.8); }
-  50%      { opacity: 0; transform: scale(0); }
-}
-
-.bolt-1          { animation: bolt-flicker-1 3s ease-in-out infinite; }
-.bolt-1-branch   { animation: bolt-flicker-1 3s ease-in-out infinite 0.1s; }
-.bolt-2          { animation: bolt-flicker-2 4s ease-in-out infinite; }
-.bolt-2-branch   { animation: bolt-flicker-2 4s ease-in-out infinite 0.15s; }
-.bolt-3          { animation: bolt-flicker-3 5s ease-in-out infinite; }
-.origin-pulse        { animation: origin-pulse 1.5s ease-in-out infinite; }
-.origin-pulse-outer  { animation: origin-pulse-outer 1.5s ease-in-out infinite; }
-.spark           { animation: spark-pulse 3s ease-in-out infinite; }
-.spark-1         { animation-delay: 0.3s; animation-duration: 3s; }
-.spark-2         { animation-delay: 0.8s; animation-duration: 4s; }
-.spark-3         { animation-delay: 1.4s; animation-duration: 5s; }
-.spark-4         { animation-delay: 0.1s; animation-duration: 3.5s; }
 
 /* ─── Scroll-reveal animation ─── */
 .reveal {
@@ -219,23 +184,6 @@
 .hero-fade-in-delay    { animation: hero-fade-up 0.9s ease 0.2s both; }
 .hero-fade-in-delay-2  { animation: hero-fade-up 0.9s ease 0.4s both; }
 .hero-fade-in-delay-3  { animation: hero-fade-up 0.9s ease 0.7s both; }
-
-/* ─── Text-arc animation: "Tegangan" → "Menengah" ─── */
-@keyframes arc-hero-draw {
-  0%        { stroke-dashoffset: 750; opacity: 0; }
-  4%        { opacity: 1; }
-  28%       { stroke-dashoffset: 0; opacity: 1; }
-  34%       { opacity: 0.5; }
-  37%       { opacity: 1; }
-  46%       { stroke-dashoffset: 0; opacity: 0; }
-  96%,100%  { stroke-dashoffset: 750; opacity: 0; }
-}
-
-.arc-hero-draw {
-  stroke-dasharray: 750;
-  stroke-dashoffset: 750;
-  animation: arc-hero-draw 5s ease-in-out infinite;
-}
 
 .clip-diagonal {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);

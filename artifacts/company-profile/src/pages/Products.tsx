@@ -1,7 +1,8 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Link } from "wouter";
-import { ArrowRight, Zap } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Search, SearchX, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { cn, whatsappQuoteUrl } from "@/lib/utils";
 
 /* ─── Verified Unsplash images ─── */
 const IMG = {
@@ -53,6 +54,7 @@ export default function Products() {
     {
       id: "mv-switchgear",
       name: "Medium Voltage Switchgear",
+      categoryKey: "mv" as const,
       category: t.product.categories.mv,
       image: IMG.switchgear,
       descId: "Panel distribusi tegangan menengah untuk memutus, mengontrol, dan melindungi sirkuit listrik dan peralatan. Tersedia dalam konfigurasi Air Insulated dan Gas Insulated.",
@@ -63,6 +65,7 @@ export default function Products() {
     {
       id: "transformer-dry",
       name: "Dry Type Transformer",
+      categoryKey: "transformer" as const,
       category: t.product.categories.transformer,
       image: IMG.transformer,
       descId: "Transformator tipe kering resin cor untuk aplikasi indoor, ideal untuk gedung komersial dan industri yang mengutamakan keselamatan dari risiko kebakaran.",
@@ -73,6 +76,7 @@ export default function Products() {
     {
       id: "rmu",
       name: "Ring Main Unit (RMU)",
+      categoryKey: "mv" as const,
       category: t.product.categories.mv,
       image: IMG.rmu,
       descId: "Unit utama ring tertutup dan terinsulasi gas kompak untuk sistem distribusi sekunder. Compact, reliable, dan mudah dipasang di berbagai kondisi.",
@@ -83,6 +87,7 @@ export default function Products() {
     {
       id: "lv-mcc",
       name: "Low Voltage MCC Panel",
+      categoryKey: "lv" as const,
       category: t.product.categories.lv,
       image: IMG.mcc,
       descId: "Motor Control Center untuk sentralisasi sistem kendali motor-motor listrik industri, meningkatkan efisiensi operasional dan kemudahan pemeliharaan.",
@@ -96,6 +101,44 @@ export default function Products() {
   const brandsReveal = useReveal();
   const productsReveal = useReveal();
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const categoryList = useMemo(() => {
+    const seen = new Set<string>();
+    const list: { key: string; label: string }[] = [{ key: "all", label: t.product.filterAll }];
+    products.forEach((p) => {
+      if (!seen.has(p.categoryKey)) {
+        seen.add(p.categoryKey);
+        list.push({ key: p.categoryKey, label: p.category });
+      }
+    });
+    return list;
+  }, [language]);
+
+  const filteredProducts = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    return products.filter((p) => {
+      if (activeCategory !== "all" && p.categoryKey !== activeCategory) return false;
+      if (!query) return true;
+      const haystack = [
+        p.name,
+        p.descId,
+        p.descEn,
+        p.category,
+        ...p.specs,
+        ...p.brands,
+      ].join(" ").toLowerCase();
+      return haystack.includes(query);
+    });
+  }, [searchQuery, activeCategory, language]);
+
+  const hasActiveFilters = searchQuery.trim() !== "" || activeCategory !== "all";
+  const resetFilters = () => {
+    setSearchQuery("");
+    setActiveCategory("all");
+  };
+
   return (
     <div className="flex flex-col w-full">
 
@@ -107,10 +150,6 @@ export default function Products() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#070D1A]/50 via-transparent to-[#070D1A]" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-          <div className="inline-flex items-center gap-2 bg-blue-500/15 border border-blue-500/30 text-blue-300 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
-            <Zap className="h-3.5 w-3.5" fill="currentColor" />
-            {id ? "Katalog Produk" : "Product Catalog"}
-          </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 max-w-3xl leading-tight">
             {t.product.title}
           </h1>
@@ -128,9 +167,6 @@ export default function Products() {
         >
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
-              <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">
-                {id ? "Merek Resmi" : "Official Brands"}
-              </p>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{t.product.brandsMessage}</h2>
               <p className="text-gray-500 text-sm leading-relaxed">
                 {id
@@ -146,33 +182,79 @@ export default function Products() {
               ))}
             </div>
           </div>
-          <div className="mt-10 bg-blue-50 border border-blue-100 rounded-xl p-8">
-            <p className="text-blue-900 text-base font-medium leading-relaxed italic">
-              {id
-                ? '"Bukan sekadar produk. Kami menyediakan engineering sizing, kalkulasi, integrasi, dan commissioning yang diperlukan agar semuanya bekerja sempurna di fasilitas Anda."'
-                : '"Not just products. We provide the engineering sizing, calculation, integration, and commissioning required to make them work perfectly in your facility."'}
-            </p>
-          </div>
         </div>
       </section>
 
       {/* ══════════ PRODUCT GRID ══════════ */}
-      <section className="py-20 md:py-28 bg-gray-50">
+      <section className="py-14 md:py-20 bg-gray-50">
         <div
           ref={productsReveal.ref}
           className={`max-w-7xl mx-auto px-6 md:px-12 reveal ${productsReveal.visible ? "visible" : ""}`}
         >
-          <div className="text-center mb-14">
-            <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">
-              {id ? "Katalog Lengkap" : "Full Catalog"}
-            </p>
+          <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
               {id ? "Produk Unggulan Kami" : "Our Featured Products"}
             </h2>
           </div>
 
+          {/* Search + Filters */}
+          <div className="mb-12 space-y-5">
+            <div className="relative max-w-xl mx-auto">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t.product.searchPlaceholder}
+                className="w-full pl-11 pr-12 py-3.5 rounded-full border border-gray-200 bg-white text-sm text-gray-900 placeholder-gray-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  aria-label={id ? "Hapus pencarian" : "Clear search"}
+                  className="absolute right-1 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2">
+              {categoryList.map((cat) => (
+                <button
+                  key={cat.key}
+                  onClick={() => setActiveCategory(cat.key)}
+                  className={cn(
+                    "px-5 py-2 rounded-full text-sm font-medium transition-all",
+                    activeCategory === cat.key
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-100"
+                  )}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {filteredProducts.length === 0 ? (
+            <div className="flex flex-col items-center text-center py-20 px-6 bg-white border border-gray-200 rounded-xl">
+              <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 mb-5">
+                <SearchX className="h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">{t.product.noResultsTitle}</h3>
+              <p className="text-gray-500 text-sm max-w-sm mb-6">{t.product.noResultsText}</p>
+              <button
+                onClick={resetFilters}
+                className="text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              >
+                {t.product.resetFilters}
+              </button>
+            </div>
+          ) : (
           <div className="grid md:grid-cols-2 gap-8">
-            {products.map((product, i) => (
+            {filteredProducts.map((product, i) => (
               <div
                 key={product.id}
                 style={{ transitionDelay: `${i * 80}ms` }}
@@ -228,17 +310,20 @@ export default function Products() {
                     </div>
                   </div>
 
-                  <Link
-                    href="/hubungi-kami"
+                  <a
+                    href={whatsappQuoteUrl(product.name, language)}
+                    target="_blank"
+                    rel="noreferrer"
                     className="w-full flex items-center justify-center gap-2 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 rounded text-sm transition-all"
                   >
                     {t.common.requestQuote}
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))}
           </div>
+          )}
         </div>
       </section>
 

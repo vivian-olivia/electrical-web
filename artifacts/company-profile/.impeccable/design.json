@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-27T01:00:00.000Z",
+  "title": "Design System: Voltamax",
+  "extensions": {
+    "colorMeta": {
+      "circuit-blue": {
+        "role": "primary",
+        "displayName": "Circuit Blue",
+        "canonical": "oklch(0.546 0.245 262.881)",
+        "tonalRamp": [
+          "oklch(0.282 0.091 267.935)",
+          "oklch(0.379 0.146 265.522)",
+          "oklch(0.424 0.199 265.638)",
+          "oklch(0.488 0.243 264.376)",
+          "oklch(0.546 0.245 262.881)",
+          "oklch(0.623 0.214 259.815)",
+          "oklch(0.707 0.165 254.624)",
+          "oklch(0.882 0.059 254.128)"
+        ]
+      },
+      "circuit-blue-hover": {
+        "role": "primary-hover",
+        "displayName": "Circuit Blue Hover",
+        "canonical": "oklch(0.623 0.214 259.815)"
+      },
+      "substation-navy-deep": {
+        "role": "neutral",
+        "displayName": "Substation Navy Deep",
+        "canonical": "oklch(0.12 0.03 260)",
+        "tonalRamp": [
+          "oklch(0.08 0.02 260)",
+          "oklch(0.12 0.03 260)",
+          "oklch(0.17 0.035 259)",
+          "oklch(0.24 0.035 258)",
+          "oklch(0.34 0.03 257)",
+          "oklch(0.48 0.025 256)",
+          "oklch(0.68 0.015 255)",
+          "oklch(0.9 0.005 255)"
+        ]
+      },
+      "substation-navy": {
+        "role": "neutral",
+        "displayName": "Substation Navy",
+        "canonical": "oklch(0.17 0.035 259)"
+      },
+      "substation-navy-footer": {
+        "role": "neutral",
+        "displayName": "Substation Navy Footer",
+        "canonical": "oklch(0.1 0.025 260)"
+      },
+      "ambient-cyan": {
+        "role": "atmosphere",
+        "displayName": "Ambient Cyan",
+        "canonical": "oklch(0.86 0.13 199)"
+      },
+      "neutral-200": {
+        "role": "neutral",
+        "displayName": "Hairline Grey",
+        "canonical": "oklch(0.928 0.006 264.531)"
+      },
+      "neutral-500": {
+        "role": "neutral",
+        "displayName": "Body Grey",
+        "canonical": "oklch(0.551 0.027 264.364)"
+      },
+      "neutral-900": {
+        "role": "neutral",
+        "displayName": "Heading Grey",
+        "canonical": "oklch(0.21 0.034 264.665)"
+      },
+      "whatsapp-green": {
+        "role": "exception",
+        "displayName": "WhatsApp Green",
+        "canonical": "oklch(0.627 0.194 149.214)"
+      },
+      "challenge-red": {
+        "role": "exception",
+        "displayName": "Challenge Red",
+        "canonical": "oklch(0.577 0.245 27.325)"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only, one per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles across every page." },
+      "title": { "displayName": "Title", "purpose": "Card and component titles." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy on both dark and white sections." },
+      "numeral": { "displayName": "Numeral", "purpose": "Stat counters and step indices only — never prose." },
+      "label": { "displayName": "Label", "purpose": "Badges, eyebrow tags, category pills." }
+    },
+    "shadows": [
+      { "name": "hover-earned", "value": "0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1)", "purpose": "White-section cards, on hover only — never at rest." },
+      { "name": "glass-instrumentation", "value": "inset 0 1px 0 rgba(255,255,255,0.14), 0 8px 30px rgba(3,8,16,0.35)", "purpose": "Dark-section stat/feature panels, always-on." },
+      { "name": "cta-glow", "value": "0 10px 15px -3px rgba(30,64,175,0.3)", "purpose": "Primary CTA buttons only — shadow tinted to the brand blue instead of black." }
+    ],
+    "motion": [
+      { "name": "reveal-ease", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Scroll-reveal fade+rise on section entry (0.65s)." },
+      { "name": "hero-fade-ease", "value": "ease", "purpose": "Hero entrance staggered fade-up (0.9s, staggered delays)." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA — hero, section CTAs, nav contact button.",
+      "html": "<button class=\"ds-btn-primary\">Contact Us <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #2563EB; color: #fff; font-weight: 600; font-size: 14px; padding: 16px 32px; border-radius: 4px; border: none; box-shadow: 0 10px 15px -3px rgba(30,64,175,0.3); transition: background 0.2s; } .ds-btn-primary:hover { background: #3B82F6; } .ds-btn-primary:focus-visible { outline: 2px solid #3B82F6; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button (on dark)",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary CTA used only on navy backgrounds.",
+      "html": "<button class=\"ds-btn-outline\">Learn More</button>",
+      "css": ".ds-btn-outline { background: transparent; color: #fff; font-weight: 600; font-size: 14px; padding: 16px 32px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s; } .ds-btn-outline:hover { background: rgba(255,255,255,0.08); }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card-content",
+      "description": "Portfolio/product card on white sections — flat at rest, shadow on hover.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-media\"></div><div class=\"ds-card-body\"><h3 class=\"ds-card-title\">Medium Voltage Switchgear</h3><p class=\"ds-card-desc\">12kV / 24kV / 36kV, up to 3150A.</p></div></div>",
+      "css": ".ds-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: box-shadow 0.3s, border-color 0.3s; } .ds-card:hover { border-color: #BFDBFE; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .ds-card-media { aspect-ratio: 16/9; background: #F3F4F6; } .ds-card-body { padding: 24px; } .ds-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: #111827; margin-bottom: 8px; } .ds-card-desc { font-size: 14px; color: #6B7280; line-height: 1.6; }"
+    },
+    {
+      "name": "Glass Stat Panel",
+      "kind": "custom",
+      "refersTo": "stat-panel",
+      "description": "Signature instrumentation panel for stat counters and 'why choose us' tiles on navy backgrounds.",
+      "html": "<div class=\"ds-glass-panel\"><span class=\"ds-glass-value\">150+</span><span class=\"ds-glass-label\">Projects Done</span></div>",
+      "css": ".ds-glass-panel { display: flex; flex-direction: column; align-items: center; padding: 40px 16px; background: linear-gradient(155deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02)); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 8px 30px rgba(3,8,16,0.35); } .ds-glass-value { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 600; font-size: 40px; color: #fff; font-variant-numeric: tabular-nums; margin-bottom: 8px; } .ds-glass-label { font-size: 14px; color: rgba(255,255,255,0.45); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Contact form field — the one place a focus ring is hand-authored (not the shadcn --ring token).",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"email@company.co.id\" />",
+      "css": ".ds-input { width: 100%; height: 40px; padding: 0 12px; font-size: 14px; color: #111827; background: #fff; border: 1px solid #E5E7EB; border-radius: 8px; transition: border-color 0.2s, box-shadow 0.2s; } .ds-input::placeholder { color: #9CA3AF; } .ds-input:focus { outline: none; border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59,130,246,0.3); }"
+    },
+    {
+      "name": "Nav Link (active state)",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header nav link — active route carries a Circuit Blue underline bar.",
+      "html": "<a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">Products</a>",
+      "css": ".ds-nav-link { position: relative; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); padding-bottom: 2px; transition: color 0.2s; text-decoration: none; } .ds-nav-link:hover { color: #fff; } .ds-nav-link--active { color: #fff; } .ds-nav-link--active::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 100%; height: 2px; background: #2563EB; border-radius: 9999px; }"
+    },
+    {
+      "name": "Step Numeral",
+      "kind": "chip",
+      "refersTo": "numeral-label",
+      "description": "Mono-set index used on the services grid (01, 02, 03…) — the one place monospace type appears outside stat counters.",
+      "html": "<span class=\"ds-step\">01</span>",
+      "css": ".ds-step { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #D1D5DB; transition: color 0.2s; } .ds-card:hover .ds-step { color: #93C5FD; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Substation at Night",
+    "overview": "Voltamax's site reads like walking into a live medium-voltage substation after dark: deep navy control-room darkness, a faint blue schematic grid underfoot, and precise glowing blue instrumentation picking out what matters. It is engineering-grade and confident — the visual voice of a contractor who has run this equipment for 20+ years and doesn't need to shout about it. Nothing decorative competes with the one accent color; density and restraint communicate competence to a procurement audience evaluating vendor credibility, not consumer taste.\n\nThe system alternates two registers, never blends them: navy control-room sections (hero, stats, \"why choose us\", CTA, nav, footer) carry the atmosphere — blueprint-grid texture, glass-panel instrumentation, glowing blue accents on near-black. White content sections (about, services, brand partners, portfolio, product specs) carry the substance — plain, bordered, legible, where the actual technical claims live. The rhythm of dark→light→dark down the page is the structural device that makes the site feel authored rather than templated.",
+    "keyCharacteristics": [
+      "One accent hue only: Circuit Blue, at full saturation on dark backgrounds, muted to borders/hover on white ones.",
+      "Blueprint-grid texture is reserved for dark, hero-weight moments — it is a signature, not wallpaper.",
+      "Flat and bordered at rest everywhere; shadow and glow are earned by hover or by being an instrument reading (glass-panel), never decorative-by-default.",
+      "Bilingual copy (ID/EN) at every text node — the type system must hold both without breaking rhythm."
+    ],
+    "rules": [
+      { "name": "The One Blue Rule", "body": "Circuit Blue is the only saturated hue anywhere in the system for anything the brand controls. Three narrow, named exceptions are the complete list; no fourth without updating DESIGN.md first.", "section": "colors" },
+      { "name": "The Ambient-Cyan Exception", "body": "A near-invisible cyan-400 glow appears behind the hero and 'why choose us' sections purely as atmosphere. It never appears as text, an icon, or a bordered surface — it's lighting, not a palette color.", "section": "colors" },
+      { "name": "The WhatsApp-Green Exception", "body": "The site-wide floating WhatsApp chat button uses WhatsApp's own green (#16A34A) instead of Circuit Blue — an external platform's identity, not a status color, on the one persistent corner affordance where instant recognition matters most. Every other WhatsApp-adjacent element (Contact page's WhatsApp row, 'Request Quote' CTAs) stays Circuit Blue.", "section": "colors" },
+      { "name": "The Challenge/Solution Exception", "body": "The project-detail page's Challenges (red #DC2626) vs. Solutions (Circuit Blue) two-column comparison is the one place a second hue carries real product meaning — a self-contained, single-use scanning aid. It does not license red anywhere else.", "section": "colors" },
+      { "name": "The Mono-for-Numbers-Only Rule", "body": "IBM Plex Mono never sets prose — only literal numerals (stat counts, step indices). Using it for a label or heading breaks the 'instrumentation reading' it's meant to evoke.", "section": "typography" },
+      { "name": "The Brand-Wordmark Exception", "body": "Coded brand-partner logos (SIEMENS, eaton, Hitachi's 'Energy' subtitle) reproduce each partner's real logotype in their own typeface and, where the source uses one, an off-ramp size — misrepresenting the mark in Plus Jakarta Sans would be worse than the ramp deviation. Scoped strictly to logo reproduction.", "section": "typography" },
+      { "name": "The Earned-Shadow Rule", "body": "A card on a white section never has a shadow at rest. Shadow is what happens when the user's attention lands on it.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep Circuit Blue (#2563EB, hover #3B82F6) as the system's only accent hue.",
+      "Do alternate white content sections with Substation Navy sections as the primary structural rhythm between page sections.",
+      "Do reserve the blueprint-grid texture for dark, hero-weight sections.",
+      "Do let shadow be a hover response on white sections and use glass-panel for elevation on dark sections.",
+      "Do pair Plus Jakarta Sans (display/headline) with Inter (body), and keep IBM Plex Mono strictly for numerals.",
+      "Do write every new string in both Indonesian and English.",
+      "Do use WhatsApp green only on the site-wide floating chat button, and red only on the Challenges/Solutions pairing — every other WhatsApp-adjacent element and CTA stays Circuit Blue."
+    ],
+    "donts": [
+      "Don't treat the shadcn --primary CSS token as the brand accent — it's orphaned; Circuit Blue is the real source of truth.",
+      "Don't add a drop shadow to a white-section card at rest.",
+      "Don't introduce a fourth saturated hue, or extend green/red beyond their two named exceptions.",
+      "Don't round the Home page's services tile grid to match other cards — its flat treatment is a deliberate signature.",
+      "Don't invent client names, testimonials, certifications, or benchmarks beyond what's on record in PRODUCT.md."
+    ]
+  }
+}

@@ -6,6 +6,8 @@ import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { LanguageProvider } from '@/i18n/LanguageContext';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { ScrollToTop } from '@/components/layout/ScrollToTop';
+import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp';
 
 // Pages
 import Home from '@/pages/Home';
@@ -19,6 +21,7 @@ const queryClient = new QueryClient();
 function Router() {
   return (
     <div className="min-h-screen flex flex-col w-full">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-1">
         <Switch>
@@ -31,6 +34,7 @@ function Router() {
         </Switch>
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }

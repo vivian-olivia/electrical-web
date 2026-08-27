@@ -35,8 +35,12 @@ export const translations = {
         { title: "Maintenance", desc: "Layanan perawatan preventif dan korektif untuk keandalan jangka panjang." }
       ],
       featuredProjectsTitle: "Proyek Pilihan",
+      featuredProjectsSubtitle: "Lebih dari 20 tahun pengalaman menangani proyek kelistrikan tegangan menengah — berikut sebagian dari yang telah kami kerjakan.",
+      viewAllProjects: "Lihat Semua Proyek",
       partnersTitle: "Mitra Teknologi Kami",
+      partnersSubtitle: "Kami memilih dan memasang komponen dari produsen peralatan kelistrikan terkemuka dunia, didukung kemitraan langsung yang terjalin selama lebih dari 20 tahun.",
       industriesTitle: "Industri yang Kami Layani",
+      industriesSubtitle: "Dari lantai produksi manufaktur hingga tulang punggung data center, kami merancang dan membangun infrastruktur tegangan menengah yang menjaga operasional krusial tetap berjalan.",
       industries: ["Manufaktur", "Pertambangan", "Oil & Gas", "Infrastruktur", "Gedung Komersial", "Data Center"],
       ctaTitle: "Siap Memulai Proyek Anda?",
       ctaSubtitle: "Tim engineer kami siap memberikan solusi terbaik untuk kebutuhan kelistrikan Anda.",
@@ -44,17 +48,6 @@ export const translations = {
     about: {
       title: "Tentang Kami",
       subtitle: "Membangun fondasi energi yang andal untuk menggerakkan industri Indonesia.",
-      profileText1: "Didirikan dengan komitmen pada keunggulan teknis, kami telah berkembang menjadi salah satu perusahaan rekayasa kelistrikan terkemuka di Indonesia. Fokus kami adalah pada sistem Tegangan Menengah (Medium Voltage), memberikan solusi end-to-end yang menjamin keandalan dan efisiensi.",
-      profileText2: "Dari pabrik manufaktur hingga instalasi pertambangan, kami memahami bahwa listrik adalah urat nadi operasi klien kami. Oleh karena itu, setiap desain yang kami buat dan setiap baut yang kami kencangkan didasarkan pada standar rekayasa tertinggi.",
-      visionTitle: "Visi Kami",
-      visionText: "Menjadi penyedia solusi infrastruktur kelistrikan paling terpercaya di Asia Tenggara yang mengedepankan inovasi, keselamatan, dan keandalan.",
-      missionTitle: "Misi Kami",
-      missionItems: [
-        "Memberikan layanan rekayasa kelistrikan berkualitas tinggi dan berstandar internasional.",
-        "Memprioritaskan keselamatan dan kesehatan kerja dalam setiap aktivitas operasional.",
-        "Membangun kemitraan jangka panjang dengan klien melalui solusi yang efisien dan efektif.",
-        "Terus mengembangkan kompetensi sumber daya manusia kami."
-      ],
       stats: {
         years: "Tahun Pengalaman",
         projects: "Proyek Selesai",
@@ -76,7 +69,12 @@ export const translations = {
         accessories: "Aksesoris"
       },
       highlightsTitle: "Spesifikasi Teknis:",
-      availableBrandsTitle: "Merek Tersedia:"
+      availableBrandsTitle: "Merek Tersedia:",
+      filterAll: "Semua Kategori",
+      searchPlaceholder: "Cari produk, spesifikasi, atau merek...",
+      noResultsTitle: "Produk Tidak Ditemukan",
+      noResultsText: "Coba ubah kata kunci pencarian atau pilih kategori lain.",
+      resetFilters: "Reset Filter"
     },
     contact: {
       heroTitle: "Mari Diskusikan Proyek Anda",
@@ -144,8 +142,12 @@ export const translations = {
         { title: "Maintenance", desc: "Preventive and corrective maintenance services for long-term reliability." }
       ],
       featuredProjectsTitle: "Featured Projects",
+      featuredProjectsSubtitle: "Over 20 years delivering medium voltage electrical projects — here's a look at what we've built.",
+      viewAllProjects: "View All Projects",
       partnersTitle: "Our Technology Partners",
+      partnersSubtitle: "We specify and install components from the world's leading electrical equipment manufacturers, backed by direct brand partnerships built over 20+ years.",
       industriesTitle: "Industries We Serve",
+      industriesSubtitle: "From manufacturing floors to data center backbones, we design and build the medium-voltage infrastructure that keeps critical operations running.",
       industries: ["Manufacturing", "Mining", "Oil & Gas", "Infrastructure", "Commercial Buildings", "Data Centers"],
       ctaTitle: "Ready to Start Your Project?",
       ctaSubtitle: "Our engineering team is ready to provide the best solutions for your electrical needs.",
@@ -153,17 +155,6 @@ export const translations = {
     about: {
       title: "About Us",
       subtitle: "Building the reliable energy foundation that powers Indonesian industry.",
-      profileText1: "Founded with a commitment to technical excellence, we have grown into one of Indonesia's leading electrical engineering firms. Our focus is on Medium Voltage systems, delivering end-to-end solutions that guarantee reliability and efficiency.",
-      profileText2: "From manufacturing plants to mining installations, we understand that electricity is the lifeblood of our clients' operations. Therefore, every design we create and every bolt we tighten is based on the highest engineering standards.",
-      visionTitle: "Our Vision",
-      visionText: "To be the most trusted electrical infrastructure solution provider in Southeast Asia, championing innovation, safety, and reliability.",
-      missionTitle: "Our Mission",
-      missionItems: [
-        "Deliver high-quality, international-standard electrical engineering services.",
-        "Prioritize occupational health and safety in every operational activity.",
-        "Build long-term partnerships with clients through efficient and effective solutions.",
-        "Continuously develop the competence of our human resources."
-      ],
       stats: {
         years: "Years of Experience",
         projects: "Completed Projects",
@@ -185,7 +176,12 @@ export const translations = {
         accessories: "Accessories"
       },
       highlightsTitle: "Technical Highlights:",
-      availableBrandsTitle: "Available Brands:"
+      availableBrandsTitle: "Available Brands:",
+      filterAll: "All Categories",
+      searchPlaceholder: "Search products, specs, or brands...",
+      noResultsTitle: "No Products Found",
+      noResultsText: "Try adjusting your search keyword or selecting a different category.",
+      resetFilters: "Reset Filters"
     },
     contact: {
       heroTitle: "Let's Discuss Your Project",
