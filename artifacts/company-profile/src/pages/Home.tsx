@@ -1,17 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { assetUrl } from "@/lib/utils";
 import {
   ArrowRight,
   Wrench, Settings, Building2, Activity,
   MapPin, Tag,
   Factory, Mountain, Fuel, Building, Server,
+  Shield, Zap, Users,
 } from "lucide-react";
 import { projectsData } from "@/data/projects";
 
 /* ─── Images ─── */
-const HERO_BG = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80";
+const HERO_BG = assetUrl("/hero.jpg");
 const CTA_IMG = "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1920&q=80";
+
+/* Positionally matched to the four hero feature bullets below */
+const HERO_FEATURE_ICONS = [Shield, Settings, Zap, Users];
 
 /* Two of the three real, named case studies — spanning different industries as a homepage teaser. Full portfolio lives on /tentang-kami. */
 const FEATURED_PROJECTS = projectsData.slice(0, 2);
@@ -108,65 +113,102 @@ export default function Home() {
 
       {/* ══════════ HERO (kept in the dark register so section colors alternate cleanly) ══════════ */}
       <section className="relative min-h-screen flex flex-col bg-[#030810] overflow-hidden">
-        {/* Electric background image */}
+        {/* Switchgear photo — its own baked-in gradient fades to dark on the left.
+            On mobile the crop is narrow, so we shift it right to keep the switchgear
+            (not just the engineer) in frame, and darken it further behind the stacked text. */}
         <div className="absolute inset-0">
           <img
             src={HERO_BG}
             alt=""
-            className="w-full h-full object-cover object-center opacity-35"
+            className="w-full h-full object-cover object-[70%_center] md:object-right"
           />
-          {/* Directional overlays to darken without killing the electric glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#030810]/95 via-[#030810]/70 to-[#030810]/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#030810]/60 via-transparent to-[#030810]/75" />
+          <div className="absolute inset-0 bg-[#030810]/45 md:bg-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#030810]/70 via-[#030810]/35 to-[#030810]/95 md:from-[#030810]/50 md:via-transparent md:to-[#030810]/85" />
         </div>
 
-        {/* Static blueprint grid + ambient glow (no motion) */}
-        <div className="absolute inset-0 blueprint-grid pointer-events-none" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-blue-600/8 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/3 right-1/5 w-64 h-64 rounded-full bg-cyan-400/8 blur-3xl pointer-events-none" />
+        {/* Static blueprint grid (subtle — the photo already carries most of the darkness) */}
+        <div className="absolute inset-0 blueprint-grid pointer-events-none opacity-60" />
 
-        {/* Text content */}
-        <div className="relative z-10 flex-1 flex items-center w-full max-w-7xl mx-auto px-6 md:px-12 py-24">
-          <div className="lg:max-w-[58%]">
+        {/* Content */}
+        <div className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-14">
+          <div className="lg:max-w-[56%]">
+            {/* Eyebrow */}
+            <span className="block text-blue-400 text-sm font-bold tracking-[0.2em] uppercase mb-4 hero-fade-in">
+              {id ? "Solusi Tegangan Menengah" : "Medium Voltage Solutions"}
+            </span>
+            <div className="w-10 h-0.5 bg-blue-500 mb-6 hero-fade-in" />
+
             {/* Headline */}
-            <h1 className="font-bold text-white leading-[1.1] mb-8 hero-fade-in">
-              <span className="block text-3xl md:text-5xl lg:text-6xl text-white/80 mb-1">
+            <h1 className="font-extrabold leading-[1.12] mb-8 hero-fade-in">
+              <span className="block text-4xl md:text-5xl lg:text-6xl text-white">
                 {id ? "Solusi Kelistrikan" : "Reliable Electrical"}
               </span>
-              <span className="block text-5xl md:text-7xl lg:text-8xl text-blue-400">
-                {id ? "Tegangan" : "Medium"}
+              <span className="block text-4xl md:text-5xl lg:text-6xl text-blue-500">
+                {id ? "Tegangan Menengah" : "Medium Voltage"}
               </span>
-              <span className="block text-5xl md:text-7xl lg:text-8xl text-blue-400 mt-1">
-                {id ? "Menengah" : "Voltage"}
-              </span>
-              <span className="block text-2xl md:text-4xl lg:text-5xl text-white/80 mt-2">
-                {id ? "yang Andal untuk Industri" : "Solutions for Industry"}
+              <span className="block text-4xl md:text-5xl lg:text-6xl text-white">
+                {id ? "untuk Industri" : "Solutions for Industry"}
               </span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-white/55 text-base md:text-lg leading-relaxed mb-10 max-w-xl hero-fade-in-delay-2">
+            <p className="text-white/55 text-base md:text-lg leading-relaxed mb-8 max-w-xl hero-fade-in-delay-2">
               {id
-                ? "Engineering, EPC, Testing & Commissioning, dan Maintenance untuk sistem kelistrikan tegangan menengah di berbagai sektor industri."
-                : "Engineering, EPC, Testing & Commissioning, and Maintenance for medium voltage electrical systems across industrial sectors."}
+                ? "Engineering, EPC, Testing & Commissioning, dan Maintenance untuk sistem kelistrikan tegangan menengah."
+                : "Engineering, EPC, Testing & Commissioning, and Maintenance for medium voltage electrical systems."}
             </p>
+
+            <div className="w-10 h-0.5 bg-blue-500 mb-8 hero-fade-in-delay-2" />
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 hero-fade-in-delay-2">
               <Link
                 href="/tentang-kami"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded text-sm transition-colors shadow-lg shadow-blue-900/30"
+                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded text-sm transition-colors shadow-lg shadow-blue-900/30"
               >
                 {id ? "Lihat Portofolio" : "View Portfolio"}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/hubungi-kami"
-                className="inline-flex items-center gap-2 border border-white/25 text-white font-semibold px-8 py-4 rounded text-sm hover:bg-white/8 transition-colors"
+                href="/produk"
+                className="inline-flex items-center justify-center gap-2 border border-white/25 text-white font-semibold px-8 py-4 rounded text-sm hover:bg-white/8 transition-colors"
               >
-                {id ? "Hubungi Kami" : "Contact Us"}
+                {id ? "Jelajahi Produk" : "Explore Products"}
               </Link>
             </div>
+          </div>
+
+          {/* Feature strip */}
+          <div className="mt-16 md:mt-20 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 md:divide-x md:divide-white/10 hero-fade-in-delay-2">
+            {[
+              {
+                title: id ? "Andal & Aman" : "Reliable & Safe",
+                desc: id ? "Peralatan berkualitas tinggi dan standar keselamatan ketat" : "High quality equipment and strict safety standards",
+              },
+              {
+                title: id ? "Solusi End-to-End" : "End-to-End Solutions",
+                desc: id ? "Dari engineering hingga commissioning & maintenance" : "From engineering to commissioning & maintenance",
+              },
+              {
+                title: id ? "Dibangun untuk Performa" : "Built for Performance",
+                desc: id ? "Sistem yang dioptimalkan untuk keandalan maksimal" : "Optimized systems for maximum reliability",
+              },
+              {
+                title: id ? "Tim Berpengalaman" : "Experienced Team",
+                desc: id ? "Engineer terampil dengan keahlian industri" : "Skilled engineers with industrial expertise",
+              },
+            ].map((feature, i) => {
+              const Icon = HERO_FEATURE_ICONS[i];
+              return (
+                <div key={feature.title} className="flex items-start gap-3 md:px-6 first:md:pl-0">
+                  <Icon className="h-6 w-6 text-blue-400 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-white font-semibold text-sm mb-1">{feature.title}</div>
+                    <div className="text-white/45 text-xs leading-relaxed">{feature.desc}</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -306,7 +348,7 @@ export default function Home() {
               { value: 15, suffix: "+", label: id ? "Brand Partner" : "Brand Partners" },
             ].map((s) => (
               <div key={s.label} className="glass-panel-light flex flex-col items-center py-10 px-4">
-                <span className="text-4xl md:text-5xl font-mono font-semibold text-gray-900 mb-2 tabular-nums">
+                <span className="text-4xl md:text-5xl font-mono font-semibold text-blue-600 mb-2 tabular-nums">
                   <CountUp to={s.value} suffix={s.suffix} />
                 </span>
                 <span className="text-gray-500 text-sm font-medium">{s.label}</span>
